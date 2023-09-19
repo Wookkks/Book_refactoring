@@ -1,0 +1,211 @@
+@charset "utf-8";
+
+* {
+  font-family: 'NanumSquare';
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'NanumSquareExtraBold';
+  font-weight: 700;
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 50px 0;
+}
+
+p,
+ul,
+li,
+dl,
+dt,
+dd,
+tr,
+th,
+td {
+  font-size: 14px;
+}
+
+.grid-container {
+  justify-content: space-between;
+}
+
+/* how.css */
+.how_check {
+  position: relative;
+  margin: 50px 40px;
+
+}
+
+.how_check::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.how_check>.month {
+  margin: 50px 0 15px;
+  text-align: center;
+}
+
+.how_check>form>.input_month {
+  line-height: 1.8rem;
+}
+
+.how_check>form>button {
+  background-color: #949494;
+  color: white;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 5px;
+}
+
+.how_check>form>button:hover {
+  font-weight: bold;
+  background-color: #545454;
+}
+
+.how_check .title {
+  margin: 0 0 50px;
+}
+
+.how_check h3 {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.how_check ul {
+  display: inline-block;
+  /* width: 500px; */
+  line-height: 40px;
+  background-color: rgb(247, 236, 230);
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.how_check .weeks {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin-bottom: 1rem;
+}
+
+.how_check .book_place {
+   margin-bottom: 50px; 
+}
+
+.how_check .book_place img {
+   width: 100%;
+}
+
+.how_check .book_place p {
+   font-size: 12px;
+}
+
+.how_check .month_record {
+  /* float: left; */
+  position: relative;
+  height: fit-content;
+  display: grid;
+  /* justify-content: space-around; */
+  /* flex-wrap: nowrap; */
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.how_check .month_record p {
+	font-weight: bold;
+	margin: 0 0 5px 10px;
+}
+
+.how_check .place_img {
+  position: absolute;
+  display: grid;
+  top: 217px;
+  right: 0;
+}
+
+.how_check .place_img img {
+  float: right;
+  width: 160px;
+  /* height: auto; */
+  border-radius: 5px;
+  margin-bottom: 2.9rem;
+}
+
+.how_check .honest>hr {
+  width: 200px;
+  height: 3px;
+  border-style: none;
+  background-color: rgb(58, 58, 58);
+  text-align: center;
+  margin-top: 70px;
+}
+
+.how_check .review div {
+  background-color: rgb(244, 237, 206);
+  width: 800px;
+  height: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.how_check .review p {
+  line-height: 20px;
+}
+
+.how_check b {
+  font-size: 18px;
+}
+
+.how_check input[type='text'] {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.how_check textarea {
+  display: block;
+  resize: none;
+  width: 100%;
+}
+
+.how_check textarea::placeholder,
+.how_check input[type='text']::placeholder {
+  padding: 10px;
+}
+
+.how_check .btn_review {
+  /* position: absolute;
+  right: 10px; */
+  margin-top: 10px;
+}
+
+.how_check input[type='submit'],
+.how_check input[type='reset'] {
+  border-style: none;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  float: right;
+}
+
+.how_check #btn_sub {
+  background-color: rgb(244, 237, 206);
+  margin-left: 20px;
+}
+
+.how_check .review .first_reviwer {
+  margin-top: 70px;
+}
+
+.how_check .review div {
+  margin-top: 30px;
+}

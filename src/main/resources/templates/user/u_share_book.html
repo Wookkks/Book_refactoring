@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나눔책첵</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_share_book.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body id="wrap">
+  <dl class="skip-nav">
+    <dt class="blind"><strong>skip naviation</strong></dt>
+    <dd><a href="/user/main">skip to main</a></dd>
+    <dd><a href="/user/how">skip to how</a></dd>
+    <dd><a href="/user/chart">skip to chart</a></dd>
+    <dd><a href="/user/share">skip to share</a></dd>
+    <dd><a href="/user/noti">skip to noti</a></dd>
+    <dd><a href="/user/join">skip to join</a></dd>
+    <dd><a href="#footer">skip to footer</a></dd>
+  </dl>
+  <!-- START -->
+  <div class="whole_page">
+    <div id="wrap" class="grid-container">
+      <div id="side_header" class="grid-item1">
+        <div class="header_content">
+          <div class="logo">
+            <h1>
+              <a href="/user/main" title="메인페이지"><img src="/img/logo_fin.png" alt="책첵logo" width="90rem"></a>
+            </h1>
+          </div>
+          <div class="gnb">
+            <ul>
+              <li><a href="/user/main">홈</a></li>
+              <li><a href="/user/how">어때책첵</a></li>
+              <li><a href="/user/chart">분석책첵</a></li>
+              <li><a href="/user/share">나눔책첵</a></li>
+            </ul>
+            <hr>
+            <p><a href="/user/noti">공지사항</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 나눔책첵 시작 -->
+      <div class="share_check">
+        <img src="/img/나눔배너1.jpg" alt="나눔배너">
+        <a href="/user/share/add" class="divide">나눔 책첵</a>
+        <section>
+          <div th:each="with:${withBook}">
+            <!-- <button id="btn-modal_2" class="btn-modal_2"> -->
+            <a th:href="@{/user/share/cur/} + ${with.w_no}">
+              <img src="/img/ico_board.png" alt="신청현황">
+            </a>
+            <!-- </button> -->
+            <b th:text="${with.w_title}">이토록 평범한 미래</b>
+            <p th:text="${with.w_memo}">김연수 작가님의 이토록 평범한 미래를 혼자만 볼 수 없어요~!</p>
+            <!-- <a th:href="@{/user/apply/} + ${with.w_no}" class="apply_btn">신청하기</a> -->
+            <!-- <a th:href="@{/user/share/cur/} + ${with.w_no}" id="a-modal">신청현황</a> -->
+            <!-- <a href="#" class="a-modal" id="a-modal" data-w-no="{w_no}" data-password="{w_pwd}">신청현황</a> -->
+            <!-- <input type="checkbox" th:checked="${with.w_yn}" id=w_yn name=w_yn disabled><label>마감여부</label> -->
+            <ul>
+              <li>
+                <p>등록자 : </p>
+                <p th:text=${with.w_name}>곽두철</p>
+              </li>
+              <li>
+                <p>나눔지역 : </p>
+                <p th:text=${with.w_area}>서울시 마포구</p>
+              </li>
+              <li>
+                <p>등록일자 : </p>
+                <p th:text=${with.w_date}>2023.05.18</p>
+              </li>
+              <li>
+                <p>마감여부 : </p>
+                <input type="checkbox" th:checked="${with.w_yn}" id=w_yn name=w_yn disabled>
+              </li>
+            </ul>
+            <!-- <button id="btn-modal" class="btn-modal"> -->
+              <a th:href="@{/user/apply/} + ${with.w_no}" class="accept">
+              신청하기
+            </a>
+            <!-- </button> -->
+          </div>
+        </section>
+      </div>
+
+      <!-- START aside -->
+      <div id="aside" class="grid-item3">
+        <div class="aside_content">
+          <div class="noties">
+            <div class="simple_noti" th:each="noti:${noti}">
+              <a th:href="@{/user/noti/} + ${noti.n_no}">
+                <h3 th:text="${noti.n_title}"></h3>
+                <p th:text="${noti.n_content}"></p>
+              </a>
+            </div>
+            <!-- 신청하기 -->
+            <div class="side_join">
+              <p>책첵과 함께하기</p>
+              <a href="/user/join">신청</a>
+            </div>
+          </div>
+          <!-- footer -->
+          <div id="side_footer">
+            <div class="footer">
+              <ul>
+                <li><a href="/user/terms">이용약관</a></li>
+                <li><a href="/user/privacy">개인정보처리방침</a></li>
+                <li><button class="btn_modal">관리자페이지</button></li>
+              </ul>
+              <div>
+                <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
+              </div>
+            </div>
+          </div>
+          <!-- modal -->
+          <div id="modal" class="pw_modal">
+            <div class="modal_wrap">
+              <div class="modal_header">
+                <p class="pw_text">관리자 비밀번호를 입력하세요.</p>
+              </div>
+              <div class="modal_content">
+                <!-- x 버튼 -->
+                <div class="description_head">
+                  <button class="pw_btn_close">&times;</button>
+                </div>
+                <!-- m_noti.html 연결 -->
+                <form action="/manager/noti" method="post" name="maneger_pw_form" class="description_header" target="_blank">
+                  <input type="password" maxlength="6" placeholder=" 비밀번호를 입력하세요." title="숫자 4자리 이상" pattern="[0-9]+"
+                    id="pwd" name="pwd" required>
+                  <button type="submit" minlength="4" onclick="return checkPwd()">확인</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 나눔책첵 모달 시작 -->
+    <!-- 신청하기 모달 -->
+    <!-- <div class="register_modal">
+      <div class="modal_wrap">
+        <div class="btn_header">
+          <button class="btn-close">&times;</button>
+        </div>
+        <div class="description_content">
+          <form action="/user/apply" method="post" class="btn_pop">
+            <input type="hidden" name="w_no" th:value="${w_no}">
+            <input type="text" name="a_name" th:value="${a_name}" required placeholder="이름을 입력하세요." autofocus>
+            <input type="tel" name="a_phone" th:value="${a_phone}" placeholder="휴대폰 중간 4자리를 입력하세요." required
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <input type="submit" value="신청하기">
+          </form>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- 신청자 비밀번호 모달 -->
+    <!-- <div class="share_pw_modal">
+      <div class="modal_wrap">
+        <div class="btn_header">
+          <h3>신청자 현황</h3>
+          <button class="btn-close_2">&times;</button>
+        </div>
+        <div class="description_content_2">
+          <form action="/user/share/cur" method="post" class="btn_pop_2">
+            <input type="tel" placeholder="비밀번호를 입력하세요."
+             name="w_pwd" th:value="${w_pwd}" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <input class="btn-modal_3" id="btn-modal_3" type="submit" value="확인">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+    <!-- <script src="/js/u_share_book.js"></script> -->
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>
