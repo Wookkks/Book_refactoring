@@ -36,9 +36,10 @@ public class SecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/loginForm")
-                .loginProcessingUrl("/user/login")
-                .defaultSuccessUrl("/main");
+                .loginPage("/user/u_join")
+                .loginProcessingUrl("/user/u_join")
+                .defaultSuccessUrl("/main")
+                .failureForwardUrl("/main");
 
         return http.build();
     }

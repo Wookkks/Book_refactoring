@@ -21,7 +21,7 @@ public class ShareBook {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "name")
+    @JoinColumn(name = "userId")
     private User user;
 
     @Column(nullable = false, length = 50)
@@ -53,5 +53,18 @@ public class ShareBook {
             shareBook.setShareYn(shareYn);
             return shareBook;
         }
+    }
+    @Override
+    public String toString() {
+        return "ShareBook{" +
+                "id=" + id +
+                ", user=" + user +
+                ", title='" + title + '\'' +
+                ", memo='" + memo + '\'' +
+                ", area='" + area + '\'' +
+                ", password='" + password + '\'' +
+                ", createDate=" + createDate +
+                ", shareYn=" + shareYn +
+                '}';
     }
 }

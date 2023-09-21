@@ -1,4 +1,7 @@
 package com.book.check.repository;
 
-public interface HowBookRepository {
+import com.book.check.domain.HowBook;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HowBookRepository extends JpaRepository<HowBook, Integer> {
 }

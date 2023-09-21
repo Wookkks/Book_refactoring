@@ -1,5 +1,5 @@
 package com.book.check.domain;
 
 public enum RoleType {
-    USER, ADMIN;
+    ROLE_USER, ROLE_ADMIN;
 }
