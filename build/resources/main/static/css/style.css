@@ -315,6 +315,41 @@ p {
   flex-direction: column;
 }
 
+/* ///////////////////////////////////// */
+#aside .new_together {
+  display: grid;
+  background-color: #4c4c4c;
+  width: 270px;
+  height: 120px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+#aside .new_together p {
+  text-align: center;
+  line-height: 70px;
+  color: #fff;
+}
+#aside .new_login {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+#aside .new_login a {
+  margin-bottom: 50px;
+  width: 75px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(247, 236, 230);
+  font-size: 13px;
+  line-height: 30px;
+  text-align: center;
+}
+#aside .new_login a:hover {
+  background-color: #FDEFC8;
+  font-weight: bold;
+}
+/* ///////////////////////////////////// */
+
 #aside .aside_content {
   position: sticky;
   top: 0;

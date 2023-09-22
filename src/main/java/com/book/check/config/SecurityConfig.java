@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +37,14 @@ public class SecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/u_join")
-                .loginProcessingUrl("/user/u_join")
-                .defaultSuccessUrl("/main")
-                .failureForwardUrl("/main");
+                .loginPage("/user/u_loginForm")
+                .loginProcessingUrl("/user/login")
+                .defaultSuccessUrl("/user/main")
+                .failureForwardUrl("/user/main");
+
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/user/main");
 
         return http.build();
     }

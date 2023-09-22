@@ -1,34 +1,26 @@
-package com.book.check.domain;
+package com.book.check.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-public class Noti {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    private String title;
+    @Column(nullable = false, length = 10)
+    private String name;
 
     @Column(nullable = false)
     private String content;
-
-    @CreationTimestamp
-    private Timestamp notiDate;
-
-    @Column(nullable = false)
-    private String category;
 }

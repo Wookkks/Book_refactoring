@@ -1,7 +1,6 @@
 package com.book.check.controller;
 
-import com.book.check.domain.RoleType;
-import com.book.check.domain.User;
+import com.book.check.model.User;
 import com.book.check.repository.UserRepository;
 import com.book.check.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -29,13 +28,14 @@ public class UserController {
         return "user/main";
     }
 
-    @PostMapping("/join")
-    public String join(User user) {
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        user.setPassword(encPassword);
-        user.setRole(RoleType.ROLE_USER);
-        userRepository.save(user);
-        return "redirect:/main";
+    @GetMapping("/join")
+    public String getJoin() {
+        return "user/u_joinForm";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "user/u_loginForm";
+    }
+
 }

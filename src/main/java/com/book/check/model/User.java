@@ -1,4 +1,4 @@
-package com.book.check.domain;
+package com.book.check.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +34,9 @@ public class User {
 
     @Column(nullable = false, length = 50)
     private String phoneNumber;
+
+    @Column(nullable = false, length = 10)
+    private String birth;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;

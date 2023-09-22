@@ -1,6 +1,6 @@
 package com.book.check.config.auth;
 
-import com.book.check.domain.User;
+import com.book.check.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

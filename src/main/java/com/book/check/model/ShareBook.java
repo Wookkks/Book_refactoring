@@ -1,4 +1,4 @@
-package com.book.check.domain;
+package com.book.check.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,8 +1,8 @@
 package com.book.check.controller.test;
 
-import com.book.check.domain.RoleType;
-import com.book.check.domain.ShareBook;
-import com.book.check.domain.User;
+import com.book.check.model.RoleType;
+import com.book.check.model.ShareBook;
+import com.book.check.model.User;
 import com.book.check.repository.*;
 import com.book.check.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.transaction.Transactional;
 
 @Controller
 public class TestController {
@@ -59,7 +57,7 @@ public class TestController {
 
     @GetMapping("/test/join")
     public String getJoin() {
-        return "/user/u_join";
+        return "/user/u_joinForm";
     }
 
     @PostMapping("/test/share")

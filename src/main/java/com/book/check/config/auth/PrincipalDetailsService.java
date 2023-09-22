@@ -1,6 +1,6 @@
 package com.book.check.config.auth;
 
-import com.book.check.domain.User;
+import com.book.check.model.User;
 import com.book.check.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
