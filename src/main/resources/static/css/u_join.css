@@ -165,7 +165,8 @@
 
  /* apply.html */
  .apply_check form {
-  height: 550px;
+  height: 900px;
+  border-radius: 15px;
 }
 
 .apply_check input[type="tel"] {

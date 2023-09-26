@@ -147,6 +147,18 @@
 
       <!-- START aside -->
       <div id="aside" class="grid-item3">
+        <!-- ////////////////////////////////////// -->
+        <div class="new_together">
+          <p>책첵 멤버로 시작하기</p>
+          <div class="new_login" th:if="${#httpSession ne null and #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') ne null}">
+            <a href="/logout">로그아웃</a>
+          </div>
+          <div class="new_login" th:if="${#httpSession == null or #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') == null}">
+            <a href="/user/login">로그인</a>
+            <a href="/user/join">회원가입</a>
+          </div>
+        </div>
+        <!-- ///////////////////////////////////////// -->
         <div class="aside_content">
           <div class="noties">
             <div class="simple_noti" th:each="noti:${noti}">
@@ -154,11 +166,6 @@
                 <h3 th:text=${noti.n_title}></h3>
                 <p th:text="${noti.n_content}"></p>
               </a>
-            </div>
-            <!-- 신청하기 -->
-            <div class="side_join">
-              <p>책첵과 함께하기</p>
-              <a href="/user/join">신청</a>
             </div>
           </div>
           <!-- footer -->

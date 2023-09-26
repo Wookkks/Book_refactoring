@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>신청하기</title>
+  <title>나눔책첵 신청하기</title>
   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
   <link rel="icon" href="/icon/favicon-96x96.png">
-  <link rel="stylesheet" href="/css/u_join.css">
+  <link rel="stylesheet" href="/css/u_share_addForm.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -46,53 +46,71 @@
         </div>
       </div>
 
-      <!-- 신청하기 시작 -->
-      <div class="container join_check apply_check">
-        <a href="/user/main"><img src="/img/arrow_back.png" alt="뒤로가기"></a>
+      <!-- 나눔 도서등록 시작 -->
+      <div class="container join_check">
+        <a href="/user/share"><img src="/img/arrow_back.png" alt="뒤로가기"></a>
         <div class="explain">
-          <b>책첵 나눔신청</b>
-          <span>먼지 쌓여가는 책을 나눈다는 것은 <br>
-            단순히 책만 나누는 것이 아니에요.<br>나눔자의 책을 통한 감정과 생각을 듣고 싶다면 신청하세요.</span>
+          <b>책첵 나눔도서 등록</b>
+          <span>함께 책첵 체크리스트를 공유하고 싶다면 신청해주세요. <br>
+            함께 나누고 싶은 도서를 등록하시고,<br>직접 신청자를 선택해 공유하실 수 있습니다.</span>
         </div>
-        <form action="/user/apply" method="post">
+        <form action="/user/share/add" method="post">
           <div>
             <img src="/img/배경없는로고.png" alt="신청하기_로고">
           </div>
           <div>
             <div>
-              <input type="hidden" name="w_no" id="w_no" th:value="${w_no}">
-              <p>이름</p>
-              <input type="text" name="a_name" id="a_name" th:value="${a_name}" placeholder="이름을 입력해주세요." autofocus required>
+              <input type="hidden" th:value="${userId}">
+              <p>등록자</p>
+              <input type="text" name="name" id="name" th:value="${name}" readonly>
               <hr>
             </div>
             <div>
-              <p>번호 4자리</p>
-              <div class="tel">
-                <input type="tel" name="a_phone" id="a_phone" th:value="${a_phone}" required maxlength="4" placeholder="핸드폰 중간 번호 4자리를 입력하세요."
-                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
-              </div>
+              <p>도서명</p>
+              <input type="text" name="title" id="title" placeholder="도서명을 입력해주세요." autofocus required>
               <hr>
             </div>
-
+            <div>
+              <p>한줄평</p>
+              <textarea name="memo" id="memo" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="local">
+              <p>나눔지역</p>
+              <select name="area" id="area">
+                <option value="서울 서대문구">서울 서대문구</option>
+                <option value="서울 마포구">서울 마포구</option>
+                <option value="서울 종로구">서울 종로구</option>
+                <option value="서울 강남구">서울 강남구</option>
+                <option value="서울 영등포구">서울 영등포구</option>
+                <option value="서울 중구">서울 중구</option>
+              </select>
+            </div>
+          <input type="submit" value="나눔등록">
           </div>
-          <input type="submit" value="신청">
         </form>
       </div>
 
       <!-- START aside -->
       <div id="aside" class="grid-item3">
+        <!-- ////////////////////////////////////// -->
+        <div class="new_together">
+          <p>책첵 멤버로 시작하기</p>
+          <div class="new_login" th:if="${#httpSession ne null and #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') ne null}">
+            <a href="/logout">로그아웃</a>
+          </div>
+          <div class="new_login" th:if="${#httpSession == null or #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') == null}">
+            <a href="/user/login">로그인</a>
+            <a href="/user/join">회원가입</a>
+          </div>
+        </div>
+        <!-- ///////////////////////////////////////// -->
         <div class="aside_content">
           <div class="noties">
             <div class="simple_noti" th:each="noti:${noti}">
-              <a th:href="@{/user/noti/} + ${noti.n_no}">
+              <a href="/user/noti/{n_no}" >
                 <h3 th:text="${noti.n_title}"></h3>
                 <p th:text="${noti.n_content}"></p>
               </a>
-            </div>
-            <!-- 신청하기 -->
-            <div class="side_join">
-              <p>책첵과 함께하기</p>
-              <a href="/user/join">신청</a>
             </div>
           </div>
           <!-- footer -->
@@ -128,21 +146,11 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
   <script src="/js/main.js"></script>
-  <script type="text/javascript">
-  	var url = window.location.href;
-  	console.log(url);
-  	var with_id = url.substring(url.lastIndexOf("/") + 1);
-  	console.log(with_id);
-  	var applyId = document.getElementById("w_no");
-  	applyId.value = with_id;
-  	console.log(applyId);
-  </script>
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 package com.book.check.controller.test;
 
 import com.book.check.model.RoleType;
-import com.book.check.model.ShareBook;
 import com.book.check.model.User;
 import com.book.check.repository.*;
 import com.book.check.service.UserService;
@@ -50,27 +49,14 @@ public class TestController {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
         user.setPassword(encPassword);
-        user.setRole(RoleType.ROLE_USER);
+        user.setRole(RoleType.USER);
         userRepository.save(user);
         return "/user/maintest";
     }
 
     @GetMapping("/test/join")
     public String getJoin() {
-        return "/user/u_joinForm";
+        return "joinForm";
     }
 
-    @PostMapping("/test/share")
-    public String share(@ModelAttribute ShareBook shareBook, @ModelAttribute User user) {
-        String rawPassword = shareBook.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        shareBook.setUser(user);
-        shareBook.setTitle(shareBook.getTitle());
-        shareBook.setMemo(shareBook.getMemo());
-        shareBook.setArea(shareBook.getArea());
-        shareBook.setShareYn(false);
-        shareBook.toString();
-        shareBookRepository.save(shareBook);
-        return "redirect:/test/main";
-    }
 }

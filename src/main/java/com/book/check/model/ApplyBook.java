@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 public class ApplyBook {
@@ -22,15 +22,8 @@ public class ApplyBook {
     @JoinColumn(name = "shareId")
     private ShareBook shareBook;
 
-//    @OneToMany(mappedBy = "ApplyBook", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-//    @JsonIgnoreProperties("{ApplyBook}")
-//    @OrderBy("id desc")
-//    private List<User> users;
-
-    @Column(nullable = false, length = 4)
-    private String phoneNumber;
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
 }

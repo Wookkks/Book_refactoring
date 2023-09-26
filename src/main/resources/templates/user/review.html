@@ -60,10 +60,10 @@
         	<p>(왼)첫째주 마포구채그로, 둘째주 강남구욕망의북카페, 셋째주 용산구북파크라운지, 넷째주 종로구더숲초소책방</p>
         </div>
         <span class="month_record" th:each="how:${how}">
-          <p th:text="${how.h_week}">첫째주</p>
+          <p th:text="${how.week}">첫째주</p>
           <ul>
-            <li><b th:text=${how.h_title}>도둑맞은 집중력</b>을/를 읽고 함께 이야기 나눠요.</li>
-            <li th:text="${how.h_content}">가장 기억에 남는 구절을 공유하고, 각자 집중력과 관련된 에피소드를 이야기 해봐요.</li>
+            <li><b th:text="${}">도둑맞은 집중력</b>을/를 읽고 함께 이야기 나눠요.</li>
+            <li th:text="${}">가장 기억에 남는 구절을 공유하고, 각자 집중력과 관련된 에피소드를 이야기 해봐요.</li>
           </ul>
         </span>
         <div class="honest">
@@ -71,21 +71,21 @@
           <h3>책첵 이용자 솔직담백한 후기 모음</h3>
           <form action="/user/how" method="post">
             <div>
-              <input type="text" name="r_name" id="r_name" th:value="${r_name}" placeholder="이름을 입력해주세요." required>
-              <textarea name="r_content" id="r_content" th:value="${r_content}" cols="113" rows="7"
+              <input type="hidden" name="userId" id="userId" th:value="${userId}">
+<!--              <input type="text" name="name" id="name" th:value="${name}" placeholder="이름을 입력해주세요." required>-->
+              <textarea name="content" id="content" cols="113" rows="7"
                 placeholder="내용을 입력해주세요." required></textarea>
               <div class="btn_review">
                 <input type="submit" id="btn_sub" value="작성">
                 <input type="reset" id="btn_del" value="삭제">
               </div>
             </div>
+          </form>
         </div>
-        </form>
-
         <div class="review">
-          <div class="first_reviwer" th:each="review:${review}">
-            <b th:text="${review.r_name}">김혜수</b>
-            <p th:text="${review.r_content}">너무 좋았어요 최고에요! 앞으로 정기모임에 계속 참석할 예정이에요. Lorem, ipsum dolor sit amet
+          <div class="first_reviwer" th:each="ur:${userReview}">
+            <b th:text="${ur.getUser().getName()}">김혜수</b>
+            <p th:text="${ur.getContent()}">너무 좋았어요 최고에요! 앞으로 정기모임에 계속 참석할 예정이에요. Lorem, ipsum dolor sit amet
               consectetur adipisicing elit. Labore nihil consequatur tenetur excepturi blanditiis nobis itaque illo ex
               tempore aliquam sit magni, iusto, eum at distinctio aperiam, eveniet quaerat commodi?</p>
           </div>
@@ -94,18 +94,23 @@
 
       <!-- START aside -->
       <div id="aside" class="grid-item3">
+        <div class="new_together">
+          <p>책첵 멤버로 시작하기</p>
+          <div class="new_login" th:if="${#httpSession ne null and #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') ne null}">
+            <a href="/logout">로그아웃</a>
+          </div>
+          <div class="new_login" th:if="${#httpSession == null or #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') == null}">
+            <a href="/user/login">로그인</a>
+            <a href="/user/join">회원가입</a>
+          </div>
+        </div>
         <div class="aside_content">
           <div class="noties">
             <div class="simple_noti" th:each="noti:${noti}">
-              <a th:href="@{/user/noti/} + ${noti.n_no}">
-                <h3 th:text=${noti.n_title}></h3>
-                <p th:text=${noti.n_content}></p>
+              <a th:href="@{/user/noti/} + ${noti.id}">
+                <h3 th:text=${noti.title}></h3>
+                <p th:text=${noti.content}></p>
               </a>
-            </div>
-            <!-- 신청하기 -->
-            <div class="side_join">
-              <p>책첵과 함께하기</p>
-              <a href="/user/join">신청</a>
             </div>
           </div>
           <!-- footer -->

@@ -18,8 +18,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 10)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     @Column(nullable = false)
     private String content;

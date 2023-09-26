@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신청하기</title>
   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
   <link rel="icon" href="/icon/favicon-96x96.png">
-  <link rel="stylesheet" href="/css/u_noti_detail.css">
+  <link rel="stylesheet" href="/css/u_login.css">
   <link rel="stylesheet" href="/css/style.css">
-  <title>BookCheck_noti_detail</title>
 </head>
 
-<body>
+<body id="wrap">
   <dl class="skip-nav">
     <dt class="blind"><strong>skip naviation</strong></dt>
     <dd><a href="/user/main">skip to main</a></dd>
     <dd><a href="/user/how">skip to how</a></dd>
     <dd><a href="/user/chart">skip to chart</a></dd>
-    <dd><a href="/user/share">skip to with</a></dd>
+    <dd><a href="/user/share">skip to share</a></dd>
     <dd><a href="/user/noti">skip to noti</a></dd>
     <dd><a href="/user/join">skip to join</a></dd>
     <dd><a href="#footer">skip to footer</a></dd>
@@ -46,53 +46,58 @@
         </div>
       </div>
 
-      <!-- START container -->
-      <div id="container" class="grid-item2">
-        <!-- content -->
-        <div id="content">
-          <div class="wrap_section">
-            <div class="icon_back">
-              <a href="/user/noti"><img src="/img/arrow_back.png" alt="뒤로" width="27px"></a>
+      <!-- 신청하기 시작 -->
+      <div class="container login_check">
+        <a href="/user/main"><img src="/img/arrow_back.png" alt="뒤로가기"></a>
+        <div class="explain">
+          <b>책첵 로그인</b>
+          <span>책첵을 통해 여러분의 이야기를 들려주세요. <br>
+            오로지 책을 사랑하는 사람들이 모여 서로의 이야기를 공유하고<br>서로의 책첵 체크리스트를 만들어 보세요.</span>
+        </div>
+        <form action="/user/login" method="post">
+          <div>
+            <img src="/img/배경없는로고.png" alt="신청하기_로고">
+          </div>
+          <div>
+            <div>
+              <p>아이디</p>
+              <input type="text" name="username" id="username" th:value="${m_name}" placeholder="아이디를 입력해주세요." autofocus required>
+              <hr>
             </div>
-            <div class="full_content">
-              <div class="noti_head">
-                <h2 name="n_category" id="n_category" th:text=${noti.n_category}>카테고리</h2>
-                <span class="date" th:text="${noti.n_date}">2023/06/02</span>
-              </div>
-              <div class="noti_body">
-                <div>
-                  <div class="noti_title">
-                    <h3 id="n_title" name="n_title" th:text="${noti.n_title}">같은 책을 읽고 나눌 수 있도록 확대합니다.</h3>
-                    <div class="mini_benner">
-                      <img src="/img/logo.png" alt="공지이미지" width="10%">
-                    </div>
-                    <div class="main">
-                      <p name="n_content" id="n_content" th:text="${noti.n_content}">[같은 책을 읽고 나눌 수 있도록 확대합니다.]</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+            <div>
+              <p>비밀번호</p>
+              <input type="password" name="password" id="password" th:value="${m_name}" placeholder="비밀번호를 입력해주세요." autofocus required>
+              <hr>
             </div>
           </div>
-        </div>
+          <button><img src="/img/img_google.png" alt="구글로그인"><p>구글계정으로 로그인</p></button>
+          <input type="submit" value="로그인">
+        </form>
       </div>
 
       <!-- START aside -->
       <div id="aside" class="grid-item3">
+        <!-- ////////////////////////////////////// -->
+        <div class="new_together">
+          <p>책첵 멤버로 시작하기</p>
+          <div class="new_login" th:if="${#httpSession ne null and #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') ne null}">
+            <a href="/logout">로그아웃</a>
+          </div>
+          <div class="new_login" th:if="${#httpSession == null or #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') == null}">
+            <a href="/user/login">로그인</a>
+            <a href="/user/join">회원가입</a>
+          </div>
+        </div>
+        <!-- ///////////////////////////////////////// -->
         <div class="aside_content">
           <div class="noties">
-            <div class="simple_noti" th:each="notiAll:${notiAll}">
-              <a th:href="@{/user/noti/} + ${notiAll.n_no}">
-                <h3 th:text="${notiAll.n_title}"></h3>
-                <p th:text="${notiAll.n_content}"></p>
+            <div class="simple_noti" th:each="noti:${noti}">
+              <a th:href="@{/user/noti/} + ${noti.n_no}">
+                <h3 th:text="${noti.n_title}"></h3>
+                <p th:text="${noti.n_content}"></p>
               </a>
             </div>
-            <!-- 신청하기 -->
-            <div class="side_join">
-              <p>책첵과 함께하기</p>
-              <a href="/user/join">신청</a>
-            </div>
+
           </div>
           <!-- footer -->
           <div id="side_footer">
