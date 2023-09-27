@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/m_noti.css">
+  <link rel="stylesheet" href="/css/m_style.css">
+  <title>BookCheck_m_noti</title>
+</head>
+
+<body>
+  <dl class="skip-nav">
+    <dt class="blind"><strong>skip navigation</strong></dt>
+    <dd><a href="/user/main">skip to main</a></dd>
+    <dd><a href="/user/how">skip to how</a></dd>
+    <dd><a href="/user/chart">skip to chart</a></dd>
+    <dd><a href="/user/share">skip to with</a></dd>
+    <dd><a href="/user/noti">skip to noti</a></dd>
+    <dd><a href="/user/join">skip to join</a></dd>
+    <dd><a href="#Footer">skip to footer</a></dd>
+  </dl>
+  <!-- START -->
+  <div class="whole_page">
+  </div>
+  <div id="wrap" class="grid-container">
+    <div id="side_header" class="grid-item1">
+      <div class="header_content">
+        <div class="logo">
+          <h1>
+            <a href="/manager/noti" title="메인페이지"><img src="/img/logo_m_fin.png" alt="책첵logo" width="90rem"></a>
+          </h1>
+        </div>
+        <div class="gnb">
+          <ul>
+            <li><a href="/manager/how">어때책첵</a></li>
+            <li><a href="/manager/noti">공지사항</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- START container -->
+    <div id="container" class="grid-item2">
+      <div id="content">
+        <div class="wrap_section">
+          <div id="noti">
+            <div class="title">
+              <a href="/admin/noti/add">공지사항 쓰기</a>
+            </div>
+            <div class="noti_list">
+              <div class="notice" th:each="noti:${noties}">
+                <a th:href="@{/admin/noti/} + ${noti.id}">
+                  <p th:text="${noti.title}">제목</p>
+                  <p th:text="${noti.content}">내용</p>
+                </a>
+                <div class="btns">
+                  <span>
+                    <!-- <button class="btn_remove" id="">삭제</button> -->
+                    <a class="modify">삭제</a>
+                    <a class="modify">수정</a>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- START aside -->
+    <div id="aside" class="grid-item3">
+      <div class="aside_content">
+        <div class="noties">
+          <div class="simple_noti" th:each="noti : ${noties}">
+            <a th:href="@{/admin/noti/}+${noti.id}">
+              <h3 th:text="${noti.title}">제목</h3>
+              <p th:text="${noti.content}">내용</p>
+            </a>
+          </div>
+        </div>
+        <!-- footer -->
+        <div id="side_footer">
+          <div class="footer">
+            <ul>
+              <li><a href="/user/terms">이용약관</a></li>
+              <li><a href="/user/privacy">개인정보처리방침</a></li>
+              <li><a href="/user/main">관리자나가기</a></li>
+            </ul>
+            <div>
+              <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- <script src="/js/m_noti.js"></script> -->
+</body>
+
+</html>

@@ -65,9 +65,9 @@
     width: 100px;
 }
 
-.login_check form button {
-  margin: 15px 0 0 15px;
-}
+/*.login_check form button {*/
+/*  margin: 15px 0 0 15px;*/
+/*}*/
 
 .login_check form button img {
   width: 40px;
@@ -143,6 +143,27 @@
 .login_check input[type="submit"]:hover {
 	background-color: #4c4c4c;
 	color: #fff;
+}
+
+.login_check button {
+    margin: 20px 0 0 25px;
+    width: 300px;
+    height: 50px;
+    background-color: #F7ECE6;
+    border-radius: 15px;
+}
+
+.login_check button:hover {
+    background-color: #4c4c4c;
+}
+
+.login_check button:hover:last-of-type p {
+    color: #fff;
+}
+
+.login_check button:last-of-type p {
+    color: #333;
+    line-height: 50px;
 }
 
  /* apply.html */

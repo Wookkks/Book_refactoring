@@ -1,0 +1,65 @@
+<th:block th:fragment="headerFragment">
+    <!DOCTYPE html>
+    <html lang="ko" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+        <link rel="icon" href="/icon/favicon-96x96.png">
+        <link rel="stylesheet" href="/css/u_index_main.css">
+        <link rel="stylesheet" href="/css/style.css">
+
+        <link rel="stylesheet" href="/css/u_chart.css">
+        <link rel="stylesheet" href="/css/u_how.css">
+        <link rel="stylesheet" href="/css/u_index_main.css">
+        <link rel="stylesheet" href="/css/u_join.css">
+        <link rel="stylesheet" href="/css/u_login.css">
+        <link rel="stylesheet" href="/css/u_noti.css">
+        <link rel="stylesheet" href="/css/u_noti_detail.css">
+        <link rel="stylesheet" href="/css/u_privacy.css">
+        <link rel="stylesheet" href="/css/u_share_book.css">
+        <link rel="stylesheet" href="/css/u_share_addForm.css">
+        <link rel="stylesheet" href="/css/u_share_current.css">
+        <link rel="stylesheet" href="/css/u_terms.css">
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <title>BookCheck_main</title>
+    </head>
+
+    <body>
+    <dl class="skip-nav">
+        <dt class="blind"><strong>skip naviation</strong></dt>
+        <dd><a href="main">skip to main</a></dd>
+        <dd><a href="#how">skip to how</a></dd>
+        <dd><a href="#chart">skip to chart</a></dd>
+        <dd><a href="#with">skip to with</a></dd>
+        <dd><a href="#noti">skip to noti</a></dd>
+        <dd><a href="#join">skip to join</a></dd>
+        <dd><a href="#footer">skip to footer</a></dd>
+    </dl>
+    <!-- START -->
+    <div class="whole_page">
+        <div id="wrap" class="grid-container">
+            <div id="side_header" class="grid-item1">
+                <div class="header_content">
+                    <div class="logo">
+                        <h1>
+                            <a href="#" title="메인페이지"><img src="/img/logo_fin.png" alt="책첵logo" width="90rem"></a>
+                        </h1>
+                    </div>
+                    <div class="gnb">
+                        <ul>
+                            <li><a href="/user/main">홈</a></li>
+                            <li><a href="/user/how">어때책첵</a></li>
+                            <li><a href="/user/chart">분석책첵</a></li>
+                            <li><a href="/user/share">나눔책첵</a></li>
+                        </ul>
+                        <hr>
+                        <p><a href="/user/noti">공지사항</a></p>
+                    </div>
+                </div>
+            </div>
+</th:block>
+</html>

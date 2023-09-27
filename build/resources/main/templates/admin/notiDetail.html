@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/m_noti_detail.css">
+  <link rel="stylesheet" href="/css/m_style.css">
+  <title>BookCheck_noti_detail</title>
+</head>
+
+<body>
+  <dl class="skip-nav">
+    <dt class="blind"><strong>skip navigation</strong></dt>
+    <dd><a href="/user/main">skip to main</a></dd>
+    <dd><a href="/user/how">skip to how</a></dd>
+    <dd><a href="/user/chart">skip to chart</a></dd>
+    <dd><a href="/user/share">skip to with</a></dd>
+    <dd><a href="/user/noti">skip to noti</a></dd>
+    <dd><a href="/user/join">skip to join</a></dd>
+    <dd><a href="#footer">skip to footer</a></dd>
+  </dl>
+  <!-- START -->
+  <div class="whole_page">
+    <!-- remove 모달 -->
+    <div id="modal" class="remove_modal">
+      <div class="modal_wrap">
+        <div class="modal_header">
+          <p class="pw_text">게시물을 삭제하시겠습니까?</p>
+        </div>
+        <div class="modal_content">
+          <div class="description_head">
+            <!-- x 버튼 -->
+            <button class="remove_btn_close">&times;</button>
+          </div>
+          <div class="remove_btns">
+            <form th:action="@{/admin/noti/delete/}+${noti.id}" method="post" class="remove_btns">
+              <input type="hidden" name="id" th:value="${noti.id}">
+              <button type="button" class="remove_cancel_btn">취소</button>
+              <button type="submit">확인</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="wrap" class="grid-container">
+      <div id="side_header" class="grid-item1">
+        <div class="header_content">
+          <div class="logo">
+            <h1>
+              <a href="/manager/noti" title="메인페이지"><img src="/img/logo_m_fin.png" alt="책첵logo" width="90rem"></a>
+            </h1>
+          </div>
+          <div class="gnb">
+            <ul>
+              <li><a href="/manager/how">어때책첵</a></li>
+              <li><a href="/manager/noti">공지사항</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- START container -->
+      <div id="container" class="grid-item2">
+        <!-- content -->
+        <div id="content">
+          <div class="wrap_section">
+            <div class="icon_back">
+              <button onclick="history.back();"><img src="/img/arrow_back.png" alt="뒤로" width="27px"></button>
+              <a href="/admin/noti">목록</a>
+            </div>
+            <div class="full_content">
+              <div class="noti_head">
+                <h2 name="category" id="category" th:text="${noti.category}">카테고리</h2>
+              </div>
+              <div class="noti_body">
+                <div>
+                  <div class="noti_title">
+                    <h3 th:text="${noti.title}">제목</h3>
+                    <div class="mini_benner">
+                      <img src="/img/logo.png" alt="공지이미지" width="10%">
+                    </div>
+                    <div class="main">
+                      <p th:text="${noti.content}"></p>
+                    </div>
+                  </div>
+
+                  <!-- 수정 삭제버튼 -->
+                  <div class="btns">
+                    <span>
+                      <button class="btn_remove">삭제</button>
+                      <a class="modify">수정</a>
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- START aside -->
+      <div id="aside" class="grid-item3">
+        <div class="aside_content">
+          <div class="noties">
+            <div class="simple_noti">
+              <a>
+                <h3>제목</h3>
+                <p>내용</p>
+              </a>
+            </div>
+          </div>
+          <!-- footer -->
+          <div id="side_footer">
+            <div class="footer">
+              <ul>
+                <li><a href="/user/terms">이용약관</a></li>
+                <li><a href="/user/privacy">개인정보처리방침</a></li>
+                <li><a href="/user/main">관리자나가기</a></li>
+              </ul>
+              <div>
+                <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/js/m_noti.js"></script>
+</body>
+
+</html>

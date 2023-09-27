@@ -21,7 +21,7 @@ public class UserService {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
         user.setPassword(encPassword);
-        user.setRole(RoleType.USER);
+        user.setRole(RoleType.ROLE_USER);
         userRepository.save(user);
     }
 }

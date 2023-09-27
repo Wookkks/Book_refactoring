@@ -33,11 +33,12 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .antMatchers("/", "/user/**", "/js/**", "/css/**", "/img/**", "/icon/**", "/test/**")
                 .permitAll()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user/u_loginForm")
+                .loginPage("/user/login")
                 .loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/user/main")
                 .failureForwardUrl("/user/main");
