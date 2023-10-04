@@ -13,10 +13,10 @@
         </div>
         <div class="aside_content">
             <div class="noties">
-                <div class="simple_noti" th:each="noti:${noti}">
-                    <a href="/user/noti/{n_no}">
-                        <h3 th:text="${noti.n_title}"></h3>
-                        <p th:text="${noti.n_content}"></p>
+                <div class="simple_noti" th:each="noti:${noties}">
+                    <a th:href="@{/user/noti/} + ${noti.id}">
+                        <h3 th:text="${noti.title}"></h3>
+                        <p th:text="${noti.content}"></p>
                     </a>
                 </div>
             </div>
@@ -41,5 +41,5 @@
     </div>
     <script src="/js/main.js"></script>
     </body>
+    </html>
 </th:block>
-</html>

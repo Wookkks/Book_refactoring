@@ -1,0 +1,47 @@
+<th:block th:fragment="adminFooterFragment">
+    <div id="aside" class="grid-item3">
+        <div class="aside_content">
+            <div class="noties">
+                <div class="simple_noti" th:each="noti:${noties}">
+                    <a th:href="@{/admin/noti/} + ${noti.id}">
+                        <h3 th:text="${noti.title}">제목</h3>
+                        <p th:text="${noti.content}">내용</p>
+                    </a>
+                </div>
+            </div>
+            <!-- footer -->
+            <div id="side_footer">
+                <div class="footer">
+                    <ul>
+                        <li><a href="/user/terms">이용약관</a></li>
+                        <li><a href="/user/privacy">개인정보처리방침</a></li>
+                        <li><a href="/user/main">관리자나가기</a></li>
+                    </ul>
+                    <div>
+                        <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </body>
+    <script type="text/javascript">
+        var currentDate = new Date();
+        var year = currentDate.getFullYear(); // 연도 가져오기
+        var month = currentDate.getMonth() + 1; // 월(0부터 시작하므로 1을 더함)
+        var day = currentDate.getDate(); // 일 가져오기
+        if (month < 10) {
+            month = '0' + month;
+        }
+        if (day < 10) {
+            day = '0' + day;
+        }
+        var formattedDate = year + '-' + month + '-' + day;
+        document.getElementById("n_date").value = formattedDate;
+    </script>
+    <script src="/js/m_noti.js"></script>
+    </html>
+</th:block>

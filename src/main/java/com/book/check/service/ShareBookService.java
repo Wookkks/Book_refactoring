@@ -24,4 +24,5 @@ public class ShareBookService {
         shareBook.setShareYn(shareYn);
         shareBookRepository.save(shareBook);
     }
+
 }

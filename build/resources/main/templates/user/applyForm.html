@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -114,41 +115,22 @@
           <div id="side_footer">
             <div class="footer">
               <ul>
+                <span>
                 <li><a href="/user/terms">이용약관</a></li>
                 <li><a href="/user/privacy">개인정보처리방침</a></li>
-                <li><button class="btn_modal">관리자페이지</button></li>
+                </span>
+                <span sec:authorize="hasRole('ROLE_ADMIN')">
+                <li><a href="/admin/noti">관리자페이지</a></li>
+                </span>
               </ul>
               <div>
                 <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
               </div>
             </div>
           </div>
-          <!-- modal -->
-          <div id="modal" class="pw_modal">
-            <div class="modal_wrap">
-              <div class="modal_header">
-                <p class="pw_text">관리자 비밀번호를 입력하세요.</p>
-              </div>
-              <div class="modal_content">
-                <!-- x 버튼 -->
-                <div class="description_head">
-                  <button class="pw_btn_close">&times;</button>
-                </div>
-                <!-- noti.html 연결 -->
-                <form action="/manager/noti" method="post" name="maneger_pw_form" class="description_header" target="_blank">
-                  <input type="password" maxlength="6" placeholder=" 비밀번호를 입력하세요." title="숫자 4자리 이상" pattern="[0-9]+"
-                    id="pwd" name="pwd" required>
-                  <button type="submit" minlength="4" onclick="return checkPwd()">확인</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
-  <script src="/js/main.js"></script>
 </body>
-
 </html>

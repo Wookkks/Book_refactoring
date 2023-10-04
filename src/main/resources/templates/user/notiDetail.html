@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="UTF-8">
@@ -11,41 +12,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <title>BookCheck_noti_detail</title>
 </head>
-
-<body>
-  <dl class="skip-nav">
-    <dt class="blind"><strong>skip naviation</strong></dt>
-    <dd><a href="/user/main">skip to main</a></dd>
-    <dd><a href="/user/how">skip to how</a></dd>
-    <dd><a href="/user/chart">skip to chart</a></dd>
-    <dd><a href="/user/share">skip to with</a></dd>
-    <dd><a href="/user/noti">skip to noti</a></dd>
-    <dd><a href="/user/join">skip to join</a></dd>
-    <dd><a href="#footer">skip to footer</a></dd>
-  </dl>
-  <!-- START -->
-  <div class="whole_page">
-    <div id="wrap" class="grid-container">
-      <div id="side_header" class="grid-item1">
-        <div class="header_content">
-          <div class="logo">
-            <h1>
-              <a href="/user/main" title="메인페이지"><img src="/img/logo_fin.png" alt="책첵logo" width="90rem"></a>
-            </h1>
-          </div>
-          <div class="gnb">
-            <ul>
-              <li><a href="/user/main">홈</a></li>
-              <li><a href="/user/how">어때책첵</a></li>
-              <li><a href="/user/chart">분석책첵</a></li>
-              <li><a href="/user/share">나눔책첵</a></li>
-            </ul>
-            <hr>
-            <p><a href="/user/noti">공지사항</a></p>
-          </div>
-        </div>
-      </div>
-
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
       <!-- START container -->
       <div id="container" class="grid-item2">
         <!-- content -->
@@ -56,18 +23,18 @@
             </div>
             <div class="full_content">
               <div class="noti_head">
-                <h2 name="n_category" id="n_category" th:text=${noti.n_category}>카테고리</h2>
-                <span class="date" th:text="${noti.n_date}">2023/06/02</span>
+                <h2 id="n_category" th:text="${noti.category}">카테고리</h2>
+<!--                <span class="date" th:text="${noti.n_date}">2023/06/02</span>-->
               </div>
               <div class="noti_body">
                 <div>
                   <div class="noti_title">
-                    <h3 id="n_title" name="n_title" th:text="${noti.n_title}">같은 책을 읽고 나눌 수 있도록 확대합니다.</h3>
+                    <h3 id="n_title" th:text="${noti.title}">같은 책을 읽고 나눌 수 있도록 확대합니다.</h3>
                     <div class="mini_benner">
                       <img src="/img/logo.png" alt="공지이미지" width="10%">
                     </div>
                     <div class="main">
-                      <p name="n_content" id="n_content" th:text="${noti.n_content}">[같은 책을 읽고 나눌 수 있도록 확대합니다.]</p>
+                      <p id="n_content" th:text="${noti.content}">같은 책을 읽고 나눌 수 있도록 확대합니다.</p>
                     </div>
                   </div>
                 </div>
@@ -77,69 +44,4 @@
           </div>
         </div>
       </div>
-
-      <!-- START aside -->
-      <div id="aside" class="grid-item3">
-        <!-- ////////////////////////////////////// -->
-        <div class="new_together">
-          <p>책첵 멤버로 시작하기</p>
-          <div class="new_login" th:if="${#httpSession ne null and #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') ne null}">
-            <a href="/logout">로그아웃</a>
-          </div>
-          <div class="new_login" th:if="${#httpSession == null or #httpSession.getAttribute('SPRING_SECURITY_CONTEXT') == null}">
-            <a href="/user/login">로그인</a>
-            <a href="/user/join">회원가입</a>
-          </div>
-        </div>
-        <!-- ///////////////////////////////////////// -->
-        <div class="aside_content">
-          <div class="noties">
-            <div class="simple_noti" th:each="notiAll:${notiAll}">
-              <a th:href="@{/user/noti/} + ${notiAll.n_no}">
-                <h3 th:text="${notiAll.n_title}"></h3>
-                <p th:text="${notiAll.n_content}"></p>
-              </a>
-            </div>
-          </div>
-          <!-- footer -->
-          <div id="side_footer">
-            <div class="footer">
-              <ul>
-                <li><a href="/user/terms">이용약관</a></li>
-                <li><a href="/user/privacy">개인정보처리방침</a></li>
-                <li><button class="btn_modal">관리자페이지</button></li>
-              </ul>
-              <div>
-                <p>&copy;BOOKCHECK ALL RIGHTS RESERVED</p>
-              </div>
-            </div>
-          </div>
-          <!-- modal -->
-          <div id="modal" class="pw_modal">
-            <div class="modal_wrap">
-              <div class="modal_header">
-                <p class="pw_text">관리자 비밀번호를 입력하세요.</p>
-              </div>
-              <div class="modal_content">
-                <!-- x 버튼 -->
-                <div class="description_head">
-                  <button class="pw_btn_close">&times;</button>
-                </div>
-                <!-- noti.html 연결 -->
-                <form action="/manager/noti" method="post" name="maneger_pw_form" class="description_header" target="_blank">
-                  <input type="password" maxlength="6" placeholder=" 비밀번호를 입력하세요." title="숫자 4자리 이상" pattern="[0-9]+"
-                    id="pwd" name="pwd" required>
-                  <button type="submit" minlength="4" onclick="return checkPwd()">확인</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="/js/main.js"></script>
-</body>
-
-</html>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

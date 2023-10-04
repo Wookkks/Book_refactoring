@@ -12,16 +12,26 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Review {
+public class AdminReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @Column(nullable = true)
+    private String img;
 
     @Column(nullable = false)
+    private String month;
+
+    @Column(nullable = false)
+    private String week;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Lob
+    @Column(nullable = false)
     private String content;
+
 }
