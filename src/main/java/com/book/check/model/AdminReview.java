@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.multipart.MultipartFile;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,20 +21,31 @@ public class AdminReview {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = true)
-    private String img;
-
     @Column(nullable = false)
     private String month;
-
+    
     @Column(nullable = false)
     private String week;
-
+    
     @Column(nullable = false)
     private String title;
 
-    @Lob
     @Column(nullable = false)
     private String content;
-
+    
+    @Column(nullable = false)
+    private String dataName;
+    
+    @Lob
+    private byte[] data;
+    
+    public AdminReview(String month, String week, String title, String content, String dataName, byte[] data) {
+    	this.month = month;
+    	this.week = week;
+        this.title = title;
+        this.content = content;
+        this.dataName = dataName;
+        this.data = data;
+    	
+    }
 }

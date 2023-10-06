@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_noti_detail.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>BookCheck_noti_detail</title>
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- START container -->
+      <div id="container" class="grid-item2">
+        <!-- content -->
+        <div id="content">
+          <div class="wrap_section">
+            <div class="icon_back">
+              <a href="/user/noti"><img src="/img/arrow_back.png" alt="뒤로" width="27px"></a>
+            </div>
+            <div class="full_content">
+              <div class="noti_head">
+                <h2 id="n_category" th:text="${noti.category}">카테고리</h2>
+<!--                <span class="date" th:text="${noti.n_date}">2023/06/02</span>-->
+              </div>
+              <div class="noti_body">
+                <div>
+                  <div class="noti_title">
+                    <h3 id="n_title" th:text="${noti.title}">같은 책을 읽고 나눌 수 있도록 확대합니다.</h3>
+                    <div class="mini_benner">
+                      <img src="/img/logo.png" alt="공지이미지" width="10%">
+                    </div>
+                    <div class="main">
+                      <p id="n_content" th:text="${noti.content}">같은 책을 읽고 나눌 수 있도록 확대합니다.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

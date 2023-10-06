@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<http auto-config="true" use-expression="true">
+  <access-denied-handler error-page="/user/accessDenied"/>
+</http>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_index_main.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/u_how.css">
+  <title>BookCheck_main</title>
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- 어때책첵 시작 -->
+      <div class="container how_check">
+        <h2>어때 책첵</h2>
+        <hr>
+        <form action="/user/how" class="month">
+          <input type="month" class="input_month" id="date" name="date">
+          <button type="submit">검색</button>
+        </form>
+        <h3 class="title">책첵 월간 모임 기록</h3>
+        <div class="book_place">
+        	<img src="/img/place.png" alt="장소">
+        	<p>(왼)첫째주 마포구채그로, 둘째주 강남구욕망의북카페, 셋째주 용산구북파크라운지, 넷째주 종로구더숲초소책방</p>
+        </div>
+        <span class="month_record" th:each="how:${how}">
+          <p th:text="${how.week}">첫째주</p>
+          <ul>
+            <li><b th:text="${}">도둑맞은 집중력</b>을/를 읽고 함께 이야기 나눠요.</li>
+            <li th:text="${}">가장 기억에 남는 구절을 공유하고, 각자 집중력과 관련된 에피소드를 이야기 해봐요.</li>
+          </ul>
+        </span>
+        <div class="honest">
+          <hr>
+          <h3>책첵 이용자 솔직담백한 후기 모음</h3>
+          <form action="/user/review" method="post" name="reviewForm" onsubmit="return handleSubmit()">
+            <div>
+              <input type="hidden" name="userId" id="userId" th:value="${userId}">
+              <textarea name="content" id="content" cols="113" rows="7"
+                placeholder="내용을 입력해주세요." required></textarea>
+              <div class="btn_review">
+                <input type="submit" id="btn_sub" value="작성">
+                <input type="reset" id="btn_del" value="삭제">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="review">
+          <div class="first_reviwer" th:each="ur:${userReview}">
+            <b th:text="${ur.getUser().getName()}">김혜수</b>
+            <p th:text="${ur.getContent()}">너무 좋았어요 최고에요! 앞으로 정기모임에 계속 참석할 예정이에요.</p>
+          </div>
+        </div>
+      </div>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

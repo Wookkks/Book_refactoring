@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/m_noti.css">
+  <link rel="stylesheet" href="/css/m_style.css">
+  <title>BookCheck_m_noti</title>
+</head>
+<th:block th:replace="/layout/adminHeader:: adminHeaderFragment"></th:block>
+    <!-- START container -->
+    <div id="container" class="grid-item2">
+      <div id="content">
+        <div class="wrap_section">
+          <div id="noti">
+            <div class="title">
+              <a href="/admin/noti/add">공지사항 쓰기</a>
+            </div>
+            <div class="noti_list">
+              <div class="notice" th:each="noti:${noties}">
+                <a th:href="@{/admin/noti/} + ${noti.id}">
+                  <p th:text="${noti.title}">제목</p>
+                  <p th:text="${noti.content}">내용</p>
+                </a>
+                <div class="btns">
+                  <span>
+                    <form th:action="@{/admin/noti/delete/} + ${noti.id}" method="post" style="display: inline-block" onsubmit="return handleSubmit()">
+                    <button type="submit" class="modify">삭제</button>
+                    </form>
+                    <form th:action="@{/admin/noti/edit/} + ${noti.id}" method="get" style="display: inline-block">
+                      <button type="submit" class="modify" id="second_modifiy">수정</button>
+                    </form>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<th:block th:replace="/layout/adminFooter:: adminFooterFragment"></th:block>

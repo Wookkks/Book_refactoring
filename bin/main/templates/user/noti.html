@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_noti.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>BookCheck_noti</title>
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- START container -->
+      <div id="container" class="grid-item2">
+        <div id="main_banner">
+          <img src="/img/공지배너1.jpg" alt="메인배너" width="100%">
+        </div>
+        <!-- content -->
+        <div id="content">
+          <div class="wrap_section">
+            <div id="noti">
+              <div class="title">
+                <h2>공지사항</h2>
+              </div>
+              <div class="noti_list">
+                <div class="notice">
+                  <a th:href="@{/user/noti/} + ${noti.id}" th:each="noti:${noties}">
+                    <p th:text="${noti.title}"></p>
+                    <p th:text="${noti.content}"></p>
+                    <div>
+                      <span>책첵지기<img src="/img/round_logo.png" alt="책첵지기아이콘"></span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<script src="/js/main.js"></script>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

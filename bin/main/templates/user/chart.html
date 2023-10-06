@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>분석책첵</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_chart.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="/js/chart.js"></script>
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- 분석책첵 시작 -->
+      <div class="container chart_check">
+        <h2>분석 책첵</h2>
+        <hr>
+        <h3>책첵이 대신해서 도서 트렌드를 분석해봤어요!</h3>
+        <div class="visual">
+            <b>분야별 인기작가 순위</b>
+          <!-- <img src="/img/작가시각화.png" alt="시각화1"> -->
+          <div id="chart_div_one"></div>
+          <div>
+            <p>
+              베스트셀러에 10회이상 이름을 올린 작가를 분석해보니 <br> 1위는 히가시노 게이고(21회), 2위는 김난도(12회), 3위는 기욤 뮈소와 유시민(10회) 작가
+              순으로 결과가 나왔습니다.<br><br>
+              이러한 결과에 대한 책첵 의견은<br>히가시노 게이고 작가는 추리 소설 하면 제일 먼저 떠오르는 인물로, 가장 인기 장르인 소설과 작가만의 빠른 흡입력으로 <br> 애독자가 많기
+              때문이라고 추측해봅니다.
+            </p>
+          </div>
+        </div>
+        <div class="visual">
+            <b>분야별 인기장르 순위</b>
+          <!-- <img src="/img/분야시각화.png" alt="시각화2"> -->
+          <div id="chart_div_two"></div>
+          <div>
+            <p>책첵이 생각한 가장 인기 많은 장르는 소설이었습니다.<br><br>
+              10년간 베스트셀러에 오른 분야별 책의 권수를 분석해보니<br>1위는 소설(364권), 2위는 시/에세이(311권), 3위는 경제/경영(235권) 순으로 결과가
+              나왔습니다.<br><br>
+              이러한 결과에 대한 책책 의견은<br>여가 시간이나 휴식이 필요할 때 편하게 읽기 좋은 분야가 소설 혹은 에세이 분야이기 때문이라고 추측해봅니다.
+            </p>
+          </div>
+        </div>
+        <hr>
+        <h3>추천 책첵</h3>
+        <h4>분석 결과를 토대로 책첵이 추천해드려요!</h4>
+        <div class="recommend_1">
+          <div>책첵 추천 작가</div><br>
+          <b class="writer_area">국내편</b>
+          <ul>
+            <li>
+              <img src="/img/작가1.jpg" alt="작가1">
+              <b>Top 1</b>
+              <p>김난도</p>
+            </li>
+            <li>
+              <img src="/img/작가2.jpg" alt="작가2">
+              <b>Top 2</b>
+              <p>유시민</p>
+            </li>
+          </ul>
+        </div>
+        <div class="recommend_1">
+          <b class="writer_area">국외편</b>
+          <ul>
+            <li>
+              <img src="/img/작가3.jpg" alt="작가3">
+              <b>Top 1</b>
+              <p>히가시노 게이고</p>
+            </li>
+            <li>
+              <img src="/img/작가4.jpg" alt="작가4">
+              <b>Top 2</b>
+              <p>기욤 뮈소</p>
+            </li>
+          </ul>
+        </div>
+        <div class="recommend_2">
+          <div>책첵 추천 장르</div>
+          <ul class="ranking_2">
+            <li>Top 1</li>
+            <li>Top 2</li>
+            <li>Top 3</li>
+          </ul>
+          <ul>
+            <li>
+              <b>소설</b>
+              <p>가볍게 휴식시간부터 오며가며 대중교통<br>안에서도 읽기 좋은 소설책 어떠세요?</p>
+            </li>
+            <li>
+              <b>시/에세이</b>
+              <p>가볍게 읽기 좋은<br>시와 에세이로<br>리프레쉬 하는 시간 함께 할까요?</p>
+            </li>
+            <li>
+              <b>경제/경영</b>
+              <p>물가가 치솟는 요즘, 최대 관심사인<br>경제에 대해 함께<br>알아볼까요?</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <th:block th:replace="/layout/userFooter :: footerFragment"></th:block>
+  <script src="/js/main.js"></script>

@@ -1,8 +1,6 @@
 package com.book.check.controller;
 
-import com.book.check.model.AdminReview;
 import com.book.check.model.Noti;
-import com.book.check.repository.AdminReviewRepository;
 import com.book.check.service.AdminReviewService;
 import com.book.check.service.NotiService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @RequestMapping("/admin")
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminPostController {
 
     private final NotiService notiService;
-    private final AdminReviewRepository adminReviewRepository;
     private final AdminReviewService adminReviewService;
 
     @PostMapping("/noti/add")
@@ -27,8 +25,8 @@ public class AdminPostController {
         return "redirect:/admin/noti";
     }
     @PostMapping("/review/add")
-    public String reviewAdd(@ModelAttribute AdminReview review) {
-        adminReviewRepository.save(review);
+    public String reviewAdd(String month, String week, String title, String content, MultipartFile file) {
+    	adminReviewService.saveWithFile(month, week, title, content, file);
         return "redirect:/admin/review";
     }
     @PostMapping("/noti/delete/{id}")

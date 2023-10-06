@@ -4,6 +4,8 @@ import com.book.check.repository.AdminReviewRepository;
 import com.book.check.service.AdminReviewService;
 import com.book.check.service.NotiService;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin")
 @Controller
 public class AdminGetController {
-
+	
+	@Value("${spring.servlet.multipart.location}")
+    private String path;
+	
     private final NotiService notiService;
     private final AdminReviewService adminReviewService;
     private final AdminReviewRepository adminReviewRepository;

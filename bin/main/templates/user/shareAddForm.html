@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나눔책첵 신청하기</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_share_addForm.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- 나눔 도서등록 시작 -->
+      <div class="container join_check">
+        <a href="/user/share"><img src="/img/arrow_back.png" alt="뒤로가기"></a>
+        <div class="explain">
+          <b>책첵 나눔도서 등록</b>
+          <span>함께 책첵 체크리스트를 공유하고 싶다면 신청해주세요. <br>
+            함께 나누고 싶은 도서를 등록하시고,<br>직접 신청자를 선택해 공유하실 수 있습니다.</span>
+        </div>
+        <form action="/user/share/add" method="post">
+          <div>
+            <img src="/img/배경없는로고.png" alt="신청하기_로고">
+          </div>
+          <div>
+            <div>
+              <input type="hidden" th:value="${userId}">
+              <p>등록자</p>
+              <input type="text" name="name" id="name" th:value="${name}" readonly>
+              <hr>
+            </div>
+            <div>
+              <p>도서명</p>
+              <input type="text" name="title" id="title" placeholder="도서명을 입력해주세요." autofocus required>
+              <hr>
+            </div>
+            <div>
+              <p>한줄평</p>
+              <textarea name="memo" id="memo" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="local">
+              <p>나눔지역</p>
+              <select name="area" id="area">
+                <option value="서울 서대문구">서울 서대문구</option>
+                <option value="서울 마포구">서울 마포구</option>
+                <option value="서울 종로구">서울 종로구</option>
+                <option value="서울 강남구">서울 강남구</option>
+                <option value="서울 영등포구">서울 영등포구</option>
+                <option value="서울 중구">서울 중구</option>
+              </select>
+            </div>
+          <input type="submit" value="나눔등록">
+          </div>
+        </form>
+      </div>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

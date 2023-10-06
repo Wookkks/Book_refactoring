@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/m_noti_detail.css">
+  <link rel="stylesheet" href="/css/m_style.css">
+  <title>BookCheck_noti_detail</title>
+</head>
+
+<th:block th:replace="/layout/adminHeader:: adminHeaderFragment"></th:block>
+      <!-- START container -->
+      <div id="container" class="grid-item2">
+        <!-- content -->
+        <div id="content">
+          <div class="wrap_section">
+            <div class="icon_back">
+              <button onclick="history.back();"><img src="/img/arrow_back.png" alt="뒤로" width="27px"></button>
+              <a href="/admin/noti">목록</a>
+            </div>
+            <div class="full_content">
+              <div class="noti_head">
+                <h2 name="category" id="category" th:text="${noti.category}">카테고리</h2>
+              </div>
+              <div class="noti_body">
+                <div>
+                  <div class="noti_title">
+                    <h3 th:text="${noti.title}">제목</h3>
+                    <div class="mini_benner">
+                      <img src="/img/logo.png" alt="공지이미지" width="10%">
+                    </div>
+                    <div class="main">
+                      <p th:text="${noti.content}"></p>
+                    </div>
+                  </div>
+
+                  <!-- 수정 삭제버튼 -->
+                  <div class="btns">
+                    <span>
+                       <form th:action="@{/admin/noti/delete/} + ${noti.id}" method="post" style="display: inline-block" onsubmit="return handleSubmit()">
+                    <button type="submit" class="modify">삭제</button>
+                    </form>
+                    <form th:action="@{/admin/noti/edit/} + ${noti.id}" method="get" style="display: inline-block">
+                      <button type="submit" class="modify" id="second_modifiy">수정</button>
+                    </form>
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <th:block th:replace="/layout/adminFooter:: adminFooterFragment"></th:block>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/m_noti_addfrom.css">
+  <link rel="stylesheet" href="/css/m_style.css">
+  <title>BookCheck_m_noti_editform</title>
+</head>
+<th:block th:replace="/layout/adminHeader:: adminHeaderFragment"></th:block>
+      <!-- START container -->
+      <div id="container" class="grid-item2">
+        <!-- content -->
+        <div id="content">
+          <div class="wrap_section">
+            <div id="noti">
+              <div class="icon_back">
+                <a onclick="history.back();"><img src="/img/arrow_back.png" alt="뒤로" width="27px"></a>
+              </div>
+              <div class="title">
+                <p>공지사항 수정</p>
+                <form th:action="@{/admin/noti/edit} + ${noti.id}" method="post">
+                  <table class="noti_form_table">
+                    <tr>
+                      <td>
+                        <select name="category" th:value="${noti.category}">
+                          <optgroup label="카테고리">
+                            <option value="어때책첵">어때책첵</option>
+                            <option value="분석책첵">분석책첵</option>
+                            <option value="나눔책첵">나눔책첵</option>
+                            <option value="공지사항">공지사항</option>
+                          </optgroup>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type=text name="title" th:value="${noti.title}"
+                          placeholder=" 제목을 입력하세요.">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <textarea name="content" th:text="${noti.content}"
+                          placeholder="내용을 입력하세요."></textarea>
+                      </td>
+                    </tr>
+                  </table>
+<!--                  <input type="date" name="n_date" id="n_date" th:value=${n_date}>-->
+                  <div class="btn_upload">
+                    <button type="submit">완료</button>
+                  </div>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+<th:block th:replace="/layout/adminFooter:: adminFooterFragment"></th:block>

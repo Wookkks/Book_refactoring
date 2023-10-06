@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신청하기</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_login.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+      <!-- 신청하기 시작 -->
+      <div class="container login_check">
+        <a href="/user/main"><img src="/img/arrow_back.png" alt="뒤로가기"></a>
+        <div class="explain">
+          <b>책첵 로그인</b>
+          <span>책첵을 통해 여러분의 이야기를 들려주세요. <br>
+            오로지 책을 사랑하는 사람들이 모여 서로의 이야기를 공유하고<br>서로의 책첵 체크리스트를 만들어 보세요.</span>
+        </div>
+        <form action="/user/login" method="post">
+          <div>
+            <img src="/img/배경없는로고.png" alt="신청하기_로고">
+          </div>
+          <div>
+            <div>
+              <p>아이디</p>
+              <input type="text" name="username" id="username" th:value="${m_name}" placeholder="아이디를 입력해주세요." autofocus required>
+              <hr>
+            </div>
+            <div>
+              <p>비밀번호</p>
+              <input type="password" name="password" id="password" th:value="${m_name}" placeholder="비밀번호를 입력해주세요." autofocus required>
+              <hr>
+            </div>
+          </div>
+          <input type="submit" value="로그인">
+          <button><img src="/img/img_google.png" alt="구글로그인"><p>구글계정으로 로그인</p></button>
+        </form>
+      </div>
+<script src="/js/main.js"></script>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

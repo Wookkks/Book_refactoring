@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나눔책첵 신청자 현황</title>
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square.css" rel="stylesheet">
+  <link rel="icon" href="/icon/favicon-96x96.png">
+  <link rel="stylesheet" href="/css/u_share_current.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<th:block th:replace="/layout/userHeader :: headerFragment"></th:block>
+        <div class="share_current">
+          <h2>공유 책첵</h2>
+          <hr>
+          <h3>신청자 리스트에서 선택 후 나눔을 완료해주세요</h3>
+          <form action="/user/share/current" method="post">
+            <input type="hidden" name="id" th:value="${apply.getId()}">
+            <table>
+              <thead>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>선택</th>
+              </thead>
+              <tbody>
+                <tr th:each="applyList:${applyList}">
+                  <td th:text="${applyList.getUser().getName()}">홍서범</td>
+                  <td th:text="${applyList.getUser().getPhoneNumber()}">1111</td>
+                  <td><input type="radio" name="selector" value="selected"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <div class="share_complete">
+                <div>
+                  <b>신청자 선택을 다시 한번 확인하세요!</b>
+                  <input type="checkbox" id="shareYn" name="shareYn">
+                </div>
+              </div>
+              <input type="submit" class="btn_complete" value="나눔 완료">
+            </div>
+          </form>
+        </div>
+<script src="/js/main.js"></script>
+<th:block th:replace="/layout/userFooter :: footerFragment"></th:block>
