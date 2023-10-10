@@ -1,6 +1,6 @@
 package com.book.check.handler;
 
-import com.book.check.dto.ResponseDTO;
+import com.book.check.dto.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

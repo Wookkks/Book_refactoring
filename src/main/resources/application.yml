@@ -16,7 +16,7 @@ spring:
       location: C:/Users/User/Desktop/file
       max-file-size: 100MB
       max-request-size: 100MB
-  
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/Book?serverTimezone=Asia/Seoul
@@ -37,14 +37,16 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
 
-    security:
-      oauth2:
-        client:
-          registration:
-            google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
-              client-id: 610950748174-p213ppi7l5q9tdrc52tkee2qga9g22bo.apps.googleusercontent.com
-              client-secret: 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
-              scope:
-                - email
-                - profile
+  security:
+    oauth2:
+      client:
+        registration:
+          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
+            client-id: 610950748174-p213ppi7l5q9tdrc52tkee2qga9g22bo.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+                
+                
                 

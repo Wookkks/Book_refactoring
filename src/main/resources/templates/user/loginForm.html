@@ -28,18 +28,21 @@
           <div>
             <div>
               <p>아이디</p>
-              <input type="text" name="username" id="username" th:value="${m_name}" placeholder="아이디를 입력해주세요." autofocus required>
+              <input type="text" name="username" id="username" th:value="${m_name}" placeholder="아이디를 입력해주세요." autofocus>
               <hr>
             </div>
             <div>
               <p>비밀번호</p>
-              <input type="password" name="password" id="password" th:value="${m_name}" placeholder="비밀번호를 입력해주세요." autofocus required>
+              <input type="password" name="password" id="password" th:value="${m_name}" placeholder="비밀번호를 입력해주세요." autofocus>
               <hr>
             </div>
           </div>
           <input type="submit" value="로그인">
-          <button><img src="/img/img_google.png" alt="구글로그인"><p>구글계정으로 로그인</p></button>
+          <!-- <button><img src="/img/img_google.png" alt="구글로그인"><p>구글 로그인</p></button> -->
         </form>
+          <p id="google">
+          <a href="/oauth2/authorization/google"><img src="/img/img_google.png" alt="구글로그인">구글 로그인</a>
+          </p>
       </div>
 <script src="/js/main.js"></script>
 <th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

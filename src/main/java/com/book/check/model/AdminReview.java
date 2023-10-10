@@ -1,19 +1,14 @@
 package com.book.check.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 public class AdminReview {
 
@@ -33,19 +28,11 @@ public class AdminReview {
     @Column(nullable = false)
     private String content;
     
-    @Column(nullable = false)
-    private String dataName;
+    @Column
+    private String fileName;
     
-    @Lob
-    private byte[] data;
+    @Column
+    private String filePath;
+
     
-    public AdminReview(String month, String week, String title, String content, String dataName, byte[] data) {
-    	this.month = month;
-    	this.week = week;
-        this.title = title;
-        this.content = content;
-        this.dataName = dataName;
-        this.data = data;
-    	
-    }
 }

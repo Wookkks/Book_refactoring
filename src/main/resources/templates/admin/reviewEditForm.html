@@ -23,7 +23,7 @@
               </div>
               <div class="title">
                 <p>어때책첵 수정</p>
-                <form action="/manager/how/edit" method="post">
+                <form th:action="@{/admin/review/edit/} + ${review.id}" enctype="multipart/form-data" method="post">
                   <table class="noti_form_table">
                     <tr>
                       <td>
@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                       <td>
-                      	<img th:src="@{/uploads}"/>
+                      	<img th:src="@{/files/} + ${review.fileName}" width="770" alt="이미지"><br/><br/>
                         <textarea placeholder="책 제목을 입력하세요." name="title" th:text="${review.title}"></textarea>
                         <textarea placeholder="기록 내용을 입력하세요." name="content" th:text="${review.content}"></textarea>
                       </td>

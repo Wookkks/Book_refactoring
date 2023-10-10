@@ -1,11 +1,16 @@
 package com.book.check.controller;
 
 import com.book.check.config.auth.PrincipalDetails;
+import com.book.check.repository.AdminReviewRepository;
 import com.book.check.repository.ApplyBookRepository;
 import com.book.check.repository.NotiRepository;
 import com.book.check.repository.ShareBookRepository;
 import com.book.check.service.*;
 import lombok.RequiredArgsConstructor;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +26,7 @@ public class UserGetController {
     private final ApplyBookRepository applyBookRepository;
     private final NotiRepository notiRepository;
     private final NotiService notiService;
+    private final AdminReviewService adminReviewService;
 
     @GetMapping("/main")
     public String main(Model model) {
@@ -54,10 +60,18 @@ public class UserGetController {
     }
 
     @GetMapping("/review")
-    public String how(Model model, @AuthenticationPrincipal PrincipalDetails principal) {
+    public String how(Model model, @AuthenticationPrincipal PrincipalDetails principal, @RequestParam(required = false) String month) {
         if(principal == null || principal.getUser() == null) {
             return "user/accessDenied";
         }
+        
+        if(month == null) {
+        	Date date= new Date();
+        	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+        	month = sdf.format(date);
+        }
+        
+        model.addAttribute("adminReview", adminReviewService.findByMonth(month));
         model.addAttribute("noties", notiRepository.findAll());
         model.addAttribute("userReview", userReviewService.findAll());
         model.addAttribute("userId", principal.getUser().getId());

@@ -1,5 +1,6 @@
 package com.book.check.controller;
 
+import com.book.check.model.AdminReview;
 import com.book.check.model.Noti;
 import com.book.check.service.AdminReviewService;
 import com.book.check.service.NotiService;
@@ -25,10 +26,21 @@ public class AdminPostController {
         return "redirect:/admin/noti";
     }
     @PostMapping("/review/add")
-    public String reviewAdd(String month, String week, String title, String content, MultipartFile file) {
-    	adminReviewService.saveWithFile(month, week, title, content, file);
+    public String reviewAdd(AdminReview adminReview, MultipartFile file) throws Exception{
+    	adminReviewService.saveWithFile(adminReview, file);
         return "redirect:/admin/review";
     }
+    @PostMapping("/review/edit/{id}")
+    public String reviewEdit(@PathVariable int id, AdminReview adminReview, MultipartFile file) throws Exception {
+    	AdminReview editReview = adminReviewService.findAdminReview(id);
+    	editReview.setMonth(adminReview.getMonth());
+    	editReview.setWeek(adminReview.getWeek());
+    	editReview.setTitle(adminReview.getTitle());
+    	editReview.setContent(adminReview.getContent());
+    	adminReviewService.saveWithFile(editReview, file);
+    	return "redirect:/admin/review";
+    }
+    
     @PostMapping("/noti/delete/{id}")
     public String notiDelete(@PathVariable int id) {
         notiService.notiDelete(id);

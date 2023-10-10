@@ -21,20 +21,17 @@
       <div class="container how_check">
         <h2>어때 책첵</h2>
         <hr>
-        <form action="/user/how" class="month">
-          <input type="month" class="input_month" id="date" name="date">
+        <form action="/user/review" class="month">
+          <input type="month" class="input_month" id="month" name="month">
           <button type="submit">검색</button>
         </form>
         <h3 class="title">책첵 월간 모임 기록</h3>
-        <div class="book_place">
-        	<img src="/img/place.png" alt="장소">
-        	<p>(왼)첫째주 마포구채그로, 둘째주 강남구욕망의북카페, 셋째주 용산구북파크라운지, 넷째주 종로구더숲초소책방</p>
-        </div>
-        <span class="month_record" th:each="how:${how}">
-          <p th:text="${how.week}">첫째주</p>
+        <span class="month_record" th:each="ar:${adminReview}">
+          <p th:text="${ar.week}">첫째주</p>
+          <img th:src="@{/files/} + ${ar.fileName}" width="780" alt="이미지"><br/>
           <ul>
-            <li><b th:text="${}">도둑맞은 집중력</b>을/를 읽고 함께 이야기 나눠요.</li>
-            <li th:text="${}">가장 기억에 남는 구절을 공유하고, 각자 집중력과 관련된 에피소드를 이야기 해봐요.</li>
+            <li><b th:text="${ar.title}">도둑맞은 집중력</b>을/를 읽고 함께 이야기 나눠요.</li>
+            <li th:text="${ar.content}">가장 기억에 남는 구절을 공유하고, 각자 집중력과 관련된 에피소드를 이야기 해봐요.</li>
           </ul>
         </span>
         <div class="honest">

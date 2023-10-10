@@ -45,7 +45,9 @@
                             <input type="checkbox" th:if="${!share.getShareYn()}" disabled>
                         </li>
                     </ul>
+                    <span th:if="${userId != share.getUser().getId()}">
                     <a th:href="@{/user/share/} + ${share.id}" class="accept">신청하기</a>
+                    </span>
                 </div>
             </section>
         </div>

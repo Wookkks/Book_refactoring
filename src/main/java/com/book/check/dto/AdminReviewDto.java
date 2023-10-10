@@ -10,6 +10,6 @@ public class AdminReviewDto {
     private String week;
     private String title;
     private String content;
-    
+
     private MultipartFile[] multipartFiles = new MultipartFile[1];
 }

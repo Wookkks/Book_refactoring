@@ -1,6 +1,6 @@
 package com.book.check.controller.api;
 
-import com.book.check.dto.ResponseDTO;
+import com.book.check.dto.ResponseDto;
 import com.book.check.model.User;
 import com.book.check.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -18,9 +18,9 @@ public class UserApiController {
     }
 
     @PostMapping("/user/join")
-    public ResponseDTO<Integer> save(@RequestBody User user) {
+    public ResponseDto<Integer> save(@RequestBody User user) {
         userService.save(user);
-        return new ResponseDTO<>(HttpStatus.OK.value(), 1);
+        return new ResponseDto<>(HttpStatus.OK.value(), 1);
     }
 
 }

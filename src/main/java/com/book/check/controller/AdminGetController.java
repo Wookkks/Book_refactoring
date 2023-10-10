@@ -40,7 +40,7 @@ public class AdminGetController {
 
     @GetMapping("/review/edit/{id}")
     public String reviewEditForm(@PathVariable int id, Model model) {
-        model.addAttribute("review", adminReviewService.findHowBook(id));
+        model.addAttribute("review", adminReviewService.findAdminReview(id));
         return "admin/reviewEditForm";
     }
 

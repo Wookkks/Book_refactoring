@@ -20,10 +20,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(length = 100, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String password;
 
     @Column(nullable = false, length = 30)
@@ -32,17 +32,19 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String phoneNumber;
 
-    @Column(nullable = false, length = 10)
+    @Column(length = 10)
     private String birth;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
 
-    private String oauth;
-
+    private String provider;
+    
+	private String providerId;
+	
     @CreationTimestamp
     private Timestamp createDate;
 }
