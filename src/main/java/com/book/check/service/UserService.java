@@ -5,6 +5,7 @@ import com.book.check.model.User;
 import com.book.check.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -16,7 +17,8 @@ public class UserService {
         this.userRepository = userRepository;
         this.encoder = encoder;
     }
-
+    
+    @Transactional
     public void save(User user) {
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);

@@ -32,7 +32,6 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService{
 		OAuth2UserInfo oAuth2UserInfo = null;
 		
 		if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
-			System.out.println("구글 로그인 요청");
 			oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
 		}
 		

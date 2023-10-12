@@ -40,6 +40,7 @@ public class AdminReviewService {
     	adminReviewRepository.save(adminReview);
     }
     
+    
     public void reviewDelete(int id) {
     	adminReviewRepository.deleteById(id);
     }
