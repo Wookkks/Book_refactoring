@@ -23,7 +23,7 @@
               </div>
               <div class="title">
                 <p>공지사항 쓰기</p>
-                <form action="/admin/noti/add" method="post" onsubmit="return handleSubmit()">
+                <form action="/admin/noti/add" method="post" onsubmit="return addSubmit()">
                   <table class="noti_form_table">
                     <tr>
                       <td>
@@ -48,7 +48,6 @@
                       </td>
                     </tr>
                   </table>
-<!--                  <input type="date" name="n_date" id="n_date" th:value="${n_date}">-->
                   <div class="btn_upload">
                     <button type="submit">글쓰기</button>
                 </form>

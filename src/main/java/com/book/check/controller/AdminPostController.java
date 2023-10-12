@@ -41,6 +41,12 @@ public class AdminPostController {
     	return "redirect:/admin/review";
     }
     
+    @PostMapping("/review/delete/{id}")
+    public String reviewDelete(@PathVariable int id) {
+        adminReviewService.reviewDelete(id);
+        return "redirect:/admin/review";
+    }
+    
     @PostMapping("/noti/delete/{id}")
     public String notiDelete(@PathVariable int id) {
         notiService.notiDelete(id);

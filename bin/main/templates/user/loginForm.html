@@ -21,6 +21,7 @@
           <span>책첵을 통해 여러분의 이야기를 들려주세요. <br>
             오로지 책을 사랑하는 사람들이 모여 서로의 이야기를 공유하고<br>서로의 책첵 체크리스트를 만들어 보세요.</span>
         </div>
+        <div class="form_grid">
         <form action="/user/login" method="post">
           <div>
             <img src="/img/배경없는로고.png" alt="신청하기_로고">
@@ -28,21 +29,22 @@
           <div>
             <div>
               <p>아이디</p>
-              <input type="text" name="username" id="username" th:value="${m_name}" placeholder="아이디를 입력해주세요." autofocus>
+              <input type="text" name="username" id="username" placeholder="아이디를 입력해주세요." autofocus>
               <hr>
             </div>
             <div>
               <p>비밀번호</p>
-              <input type="password" name="password" id="password" th:value="${m_name}" placeholder="비밀번호를 입력해주세요." autofocus>
+              <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요." autofocus>
               <hr>
             </div>
           </div>
           <input type="submit" value="로그인">
-          <!-- <button><img src="/img/img_google.png" alt="구글로그인"><p>구글 로그인</p></button> -->
         </form>
+        <br/>
           <p id="google">
           <a href="/oauth2/authorization/google"><img src="/img/img_google.png" alt="구글로그인">구글 로그인</a>
           </p>
+        </div>
       </div>
 <script src="/js/main.js"></script>
 <th:block th:replace="/layout/userFooter :: footerFragment"></th:block>

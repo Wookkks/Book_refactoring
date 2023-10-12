@@ -38,8 +38,12 @@
                   </a>
                   <div class="btns">
                     <span>
-                      <!-- <button class="btn_remove">삭제</button> -->
-                      <a th:href="@{/admin/review/edit/} + ${review.id}" class="modify">수정</a>
+                    <form th:action="@{/admin/review/delete/} + ${review.id}" method="post" style="display: inline-block" onsubmit="return handleSubmit()">
+                    <button type="submit" class="modify">삭제</button>
+                    </form>
+                    <form th:action="@{/admin/review/edit/} + ${review.id}" method="get" style="display: inline-block">
+                      <button type="submit" class="modify" id="second_modifiy">수정</button>
+                    </form>
                     </span>
                   </div>
                 </div>
