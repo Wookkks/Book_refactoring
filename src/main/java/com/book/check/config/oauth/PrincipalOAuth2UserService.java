@@ -30,7 +30,6 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService{
 	
 	private OAuth2User processOAuth2User(OAuth2UserRequest userRequest, OAuth2User oAuth2User) {
 		OAuth2UserInfo oAuth2UserInfo = null;
-		
 		if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
 			oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
 		}
@@ -48,7 +47,6 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService{
 					.username(oAuth2UserInfo.getProvider() + "_" + oAuth2UserInfo.getProviderId())
 					.name(oAuth2UserInfo.getName())
 					.email(oAuth2UserInfo.getEmail())
-					.password("seo")
 					.role(RoleType.ROLE_USER)
 					.provider(oAuth2UserInfo.getProvider())
 					.providerId(oAuth2UserInfo.getProviderId())
@@ -60,5 +58,4 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService{
 		return new PrincipalDetails(user, oAuth2User.getAttributes());
 		
 	}
-
 }

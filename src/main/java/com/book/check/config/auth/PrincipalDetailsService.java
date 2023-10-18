@@ -24,7 +24,7 @@ public class PrincipalDetailsService implements UserDetailsService {
         if(userEntity != null) {
             return new PrincipalDetails(userEntity);
         } else {
-            return null;
+            throw new UsernameNotFoundException("아이디를 찾을 수 없습니다 : " + username);
         }
     }
 }

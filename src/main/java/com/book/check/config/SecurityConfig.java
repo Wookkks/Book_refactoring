@@ -8,8 +8,10 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 import com.book.check.config.oauth.PrincipalOAuth2UserService;
+import com.book.check.handler.CustomAuthFailureHandler;
 
 @RequiredArgsConstructor
 @Configuration
@@ -17,12 +19,17 @@ import com.book.check.config.oauth.PrincipalOAuth2UserService;
 public class SecurityConfig {
 	
 	private final PrincipalOAuth2UserService principalOAuth2UserService;
-
+	
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
-
+    
+    @Bean
+    public CustomAuthFailureHandler authFailureHandler() {
+    	return new CustomAuthFailureHandler();
+    }
+    
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -39,7 +46,7 @@ public class SecurityConfig {
                 .loginPage("/user/login")
                 .loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/user/main")
-                .failureForwardUrl("/user/main")
+                .failureHandler(authFailureHandler())
                 
             .and()
                 .oauth2Login()

@@ -21,6 +21,9 @@
           <span>책첵을 통해 여러분의 이야기를 들려주세요. <br>
             오로지 책을 사랑하는 사람들이 모여 서로의 이야기를 공유하고<br>서로의 책첵 체크리스트를 만들어 보세요.</span>
         </div>
+         <span th:if="${error}">
+		  <p id="valid" class="alert alert-danger" th:text="${exception}"></p>
+	      </span>
         <div class="form_grid">
         <form action="/user/login" method="post">
           <div>
@@ -40,7 +43,7 @@
           </div>
           <input type="submit" value="로그인">
         </form>
-        <br/>
+          <br/>
           <p id="google">
           <a href="/oauth2/authorization/google"><img src="/img/img_google.png" alt="구글로그인">구글 로그인</a>
           </p>

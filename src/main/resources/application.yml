@@ -9,6 +9,10 @@ server:
 
 
 spring:
+  devtools:
+    restart:
+      enabled: true
+  
   servlet:
     multipart:
       enabled: true
@@ -41,7 +45,7 @@ spring:
     oauth2:
       client:
         registration:
-          google: # /oauth2/authorization/google 이 주소를 동작하게 한다.
+          google:
             client-id: 610950748174-p213ppi7l5q9tdrc52tkee2qga9g22bo.apps.googleusercontent.com
             client-secret: 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
             scope:

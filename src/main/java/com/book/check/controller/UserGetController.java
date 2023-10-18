@@ -41,7 +41,10 @@ public class UserGetController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(@RequestParam(value = "error", required = false)String error, 
+    		@RequestParam(value = "exception", required = false)String exception ,Model model) {
+    	model.addAttribute("error", error);
+    	model.addAttribute("exception", exception);
         model.addAttribute("noties", notiRepository.findAll());
         return "user/loginForm";
     }

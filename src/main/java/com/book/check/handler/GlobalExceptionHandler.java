@@ -12,16 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(value = UsernameNotFoundException.class)
-    public ModelAndView handelUsernameNotFoundException(UsernameNotFoundException ex) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("errorMessage", ex.getMessage());
-        return modelAndView;
-    }
-
-//    @ExceptionHandler(value = Exception.class)
-//    public ResponseDTO<String> handleArgumentException(Exception e) {
-//        System.out.println("GlobalExceptionHandler");
-//        return new ResponseDTO<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
+//    @ExceptionHandler(value = UsernameNotFoundException.class)
+//    public ModelAndView handelUsernameNotFoundException(UsernameNotFoundException ex) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("errorMessage", ex.getMessage());
+//        return modelAndView;
 //    }
+
+    @ExceptionHandler(value = Exception.class)
+    public ResponseDto<String> handleArgumentException(Exception e) {
+        System.out.println("GlobalExceptionHandler");
+        return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
+    }
 }
